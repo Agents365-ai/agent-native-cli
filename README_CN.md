@@ -22,7 +22,7 @@
 | **Claude Code** | ✅ 完全支持 | 原生 SKILL.md 格式 |
 | **OpenClaw / ClawHub** | ✅ 完全支持 | `metadata.openclaw` 命名空间 |
 | **Hermes Agent** | ✅ 完全支持 | `metadata.hermes` 命名空间，category: engineering |
-| **Pi-Mo** | ✅ 完全支持 | `metadata.pimo` 命名空间 |
+| **[pi-mono](https://github.com/badlogic/pi-mono)** | ✅ 完全支持 | `metadata.pimo` 命名空间 |
 | **OpenAI Codex** | ✅ 完全支持 | `agents/openai.yaml` 侧车文件 |
 | **SkillsMP** | ✅ 可索引 | GitHub topics 已配置 |
 
@@ -90,7 +90,7 @@ skills:
     - ~/myskills/agent-native-cli
 ```
 
-### Pi-Mo
+### pi-mono
 
 ```bash
 git clone https://github.com/Agents365-ai/agent-native-cli.git ~/.pimo/skills/agent-native-cli
@@ -119,7 +119,7 @@ skills install agent-native-cli
 | Claude Code | `~/.claude/skills/agent-native-cli/` | `.claude/skills/agent-native-cli/` |
 | OpenClaw | `~/.openclaw/skills/agent-native-cli/` | `skills/agent-native-cli/` |
 | Hermes Agent | `~/.hermes/skills/engineering/agent-native-cli/` | 通过 `external_dirs` 配置 |
-| Pi-Mo | `~/.pimo/skills/agent-native-cli/` | — |
+| pi-mono | `~/.pimo/skills/agent-native-cli/` | — |
 | OpenAI Codex | `~/.codex/skills/agent-native-cli/` | `.codex/skills/agent-native-cli/` |
 
 ## 文件说明

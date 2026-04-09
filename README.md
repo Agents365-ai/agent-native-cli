@@ -22,7 +22,7 @@ The core `SKILL.md` is portable, and this repository includes metadata for the p
 | **Claude Code** | ✅ Full support | Native SKILL.md format |
 | **OpenClaw / ClawHub** | ✅ Full support | `metadata.openclaw` namespace |
 | **Hermes Agent** | ✅ Full support | `metadata.hermes` namespace, category: engineering |
-| **Pi-Mo** | ✅ Full support | `metadata.pimo` namespace |
+| **[pi-mono](https://github.com/badlogic/pi-mono)** | ✅ Full support | `metadata.pimo` namespace |
 | **OpenAI Codex** | ✅ Full support | `agents/openai.yaml` sidecar |
 | **SkillsMP** | ✅ Indexed | GitHub topics configured |
 
@@ -90,7 +90,7 @@ skills:
     - ~/myskills/agent-native-cli
 ```
 
-### Pi-Mo
+### pi-mono
 
 ```bash
 git clone https://github.com/Agents365-ai/agent-native-cli.git ~/.pimo/skills/agent-native-cli
@@ -119,7 +119,7 @@ skills install agent-native-cli
 | Claude Code | `~/.claude/skills/agent-native-cli/` | `.claude/skills/agent-native-cli/` |
 | OpenClaw | `~/.openclaw/skills/agent-native-cli/` | `skills/agent-native-cli/` |
 | Hermes Agent | `~/.hermes/skills/engineering/agent-native-cli/` | Via `external_dirs` config |
-| Pi-Mo | `~/.pimo/skills/agent-native-cli/` | — |
+| pi-mono | `~/.pimo/skills/agent-native-cli/` | — |
 | OpenAI Codex | `~/.codex/skills/agent-native-cli/` | `.codex/skills/agent-native-cli/` |
 
 ## Files

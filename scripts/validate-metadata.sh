@@ -20,7 +20,7 @@ assert_contains README.md '.codex/skills/agent-native-cli'
 assert_contains README_CN.md '~/.codex/skills/agent-native-cli'
 assert_contains README_CN.md '.codex/skills/agent-native-cli'
 
-assert_contains SKILL.md 'Includes sidecar metadata for OpenClaw, Hermes, Pi-Mo, and OpenAI Codex'
+assert_contains SKILL.md 'Includes sidecar metadata for OpenClaw, Hermes, pi-mono, and OpenAI Codex'
 assert_contains README.md 'includes metadata for the platforms listed below'
 assert_contains README_CN.md '并为下列平台提供元数据'
 

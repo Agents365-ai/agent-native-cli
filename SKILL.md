@@ -3,7 +3,7 @@ name: agent-native-cli
 description: Use when designing, reviewing, or refactoring a CLI to reliably serve AI agents alongside humans — including evaluating stdout contracts, schema introspection, dry-run, exit codes, auth delegation, safety tiers, and self-description. Use when converting an API or SDK into an agent-usable CLI interface.
 license: MIT
 homepage: https://github.com/Agents365-ai/agent-native-cli
-compatibility: No external tool dependencies. Includes sidecar metadata for OpenClaw, Hermes, Pi-Mo, and OpenAI Codex; the core SKILL.md is portable to agents that support Agent Skills-style instructions.
+compatibility: No external tool dependencies. Includes sidecar metadata for OpenClaw, Hermes, pi-mono, and OpenAI Codex; the core SKILL.md is portable to agents that support Agent Skills-style instructions.
 platforms: [macos, linux, windows]
 metadata: {"openclaw":{"requires":{},"emoji":"⌨️","os":["darwin","linux","win32"]},"hermes":{"tags":["cli","agent-native","interface-design","tool-design","structured-output","schema-driven","exit-codes","dry-run"],"category":"engineering","requires_tools":[],"related_skills":[]},"pimo":{"category":"engineering","tags":["cli","agent-native","interface-design","structured-output","schema-driven"]},"author":"Agents365-ai","version":"1.0.0"}
 ---
