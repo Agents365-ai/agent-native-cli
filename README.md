@@ -15,7 +15,7 @@
 
 ## Multi-Platform Support
 
-Works with all major AI agents that support the [Agent Skills](https://agentskills.io) format:
+The core `SKILL.md` is portable, and this repository includes metadata for the platforms listed below:
 
 | Platform | Status | Details |
 |----------|--------|---------|
@@ -99,11 +99,11 @@ git clone https://github.com/Agents365-ai/agent-native-cli.git ~/.pimo/skills/ag
 ### OpenAI Codex
 
 ```bash
-# User-level install
-git clone https://github.com/Agents365-ai/agent-native-cli.git ~/.agents/skills/agent-native-cli
+# User-level install (default CODEX_HOME)
+git clone https://github.com/Agents365-ai/agent-native-cli.git ~/.codex/skills/agent-native-cli
 
 # Project-level install
-git clone https://github.com/Agents365-ai/agent-native-cli.git .agents/skills/agent-native-cli
+git clone https://github.com/Agents365-ai/agent-native-cli.git .codex/skills/agent-native-cli
 ```
 
 ### SkillsMP
@@ -120,16 +120,16 @@ skills install agent-native-cli
 | OpenClaw | `~/.openclaw/skills/agent-native-cli/` | `skills/agent-native-cli/` |
 | Hermes Agent | `~/.hermes/skills/engineering/agent-native-cli/` | Via `external_dirs` config |
 | Pi-Mo | `~/.pimo/skills/agent-native-cli/` | — |
-| OpenAI Codex | `~/.agents/skills/agent-native-cli/` | `.agents/skills/agent-native-cli/` |
+| OpenAI Codex | `~/.codex/skills/agent-native-cli/` | `.codex/skills/agent-native-cli/` |
 
 ## Files
 
-- `SKILL.md` — **the only required file**. Loaded by all platforms as the skill instructions.
+- `SKILL.md` — the core skill instructions. This is the primary file across platforms.
 - `agents/openai.yaml` — OpenAI Codex-specific configuration (display, policy, capabilities)
 - `README.md` — this file (English)
 - `README_CN.md` — Chinese documentation
 
-> **Note:** Only `SKILL.md` is needed for the skill to work. All other files are supplementary.
+> **Note:** `SKILL.md` is the portable core. Some platforms, including OpenAI Codex, can also use sidecar metadata such as `agents/openai.yaml`.
 
 ## GitHub Topics
 

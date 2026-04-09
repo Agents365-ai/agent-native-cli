@@ -15,7 +15,7 @@
 
 ## 多平台支持
 
-兼容所有主流支持 [Agent Skills](https://agentskills.io) 格式的 AI 智能体：
+核心 `SKILL.md` 具备可移植性，并为下列平台提供元数据：
 
 | 平台 | 支持状态 | 说明 |
 |------|----------|------|
@@ -99,11 +99,11 @@ git clone https://github.com/Agents365-ai/agent-native-cli.git ~/.pimo/skills/ag
 ### OpenAI Codex
 
 ```bash
-# 用户级安装
-git clone https://github.com/Agents365-ai/agent-native-cli.git ~/.agents/skills/agent-native-cli
+# 用户级安装（默认 CODEX_HOME）
+git clone https://github.com/Agents365-ai/agent-native-cli.git ~/.codex/skills/agent-native-cli
 
 # 项目级安装
-git clone https://github.com/Agents365-ai/agent-native-cli.git .agents/skills/agent-native-cli
+git clone https://github.com/Agents365-ai/agent-native-cli.git .codex/skills/agent-native-cli
 ```
 
 ### SkillsMP
@@ -120,16 +120,16 @@ skills install agent-native-cli
 | OpenClaw | `~/.openclaw/skills/agent-native-cli/` | `skills/agent-native-cli/` |
 | Hermes Agent | `~/.hermes/skills/engineering/agent-native-cli/` | 通过 `external_dirs` 配置 |
 | Pi-Mo | `~/.pimo/skills/agent-native-cli/` | — |
-| OpenAI Codex | `~/.agents/skills/agent-native-cli/` | `.agents/skills/agent-native-cli/` |
+| OpenAI Codex | `~/.codex/skills/agent-native-cli/` | `.codex/skills/agent-native-cli/` |
 
 ## 文件说明
 
-- `SKILL.md` — **唯一必需文件**。所有平台均加载此文件作为 skill 指令。
+- `SKILL.md` — skill 的核心指令文件，是跨平台的主要内容。
 - `agents/openai.yaml` — OpenAI Codex 专用配置（显示名称、策略、能力列表）
 - `README.md` — 英文文档
 - `README_CN.md` — 本文件（中文）
 
-> **注意：** 只需要 `SKILL.md` 即可使 skill 正常工作，其他文件均为辅助文件。
+> **注意：** `SKILL.md` 是可移植核心。一些平台（包括 OpenAI Codex）还可以读取 `agents/openai.yaml` 这类侧车元数据。
 
 ## GitHub Topics
 

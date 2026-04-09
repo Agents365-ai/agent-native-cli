@@ -3,7 +3,7 @@ name: agent-native-cli
 description: Use when designing, reviewing, or refactoring a CLI to reliably serve AI agents alongside humans — including evaluating stdout contracts, schema introspection, dry-run, exit codes, auth delegation, safety tiers, and self-description. Use when converting an API or SDK into an agent-usable CLI interface.
 license: MIT
 homepage: https://github.com/Agents365-ai/agent-native-cli
-compatibility: No external tool dependencies. Works with any LLM-based agent on any platform.
+compatibility: No external tool dependencies. Includes sidecar metadata for OpenClaw, Hermes, Pi-Mo, and OpenAI Codex; the core SKILL.md is portable to agents that support Agent Skills-style instructions.
 platforms: [macos, linux, windows]
 metadata: {"openclaw":{"requires":{},"emoji":"⌨️","os":["darwin","linux","win32"]},"hermes":{"tags":["cli","agent-native","interface-design","tool-design","structured-output","schema-driven","exit-codes","dry-run"],"category":"engineering","requires_tools":[],"related_skills":[]},"pimo":{"category":"engineering","tags":["cli","agent-native","interface-design","structured-output","schema-driven"]},"author":"Agents365-ai","version":"1.0.0"}
 ---
@@ -193,9 +193,9 @@ Decide whether the user is providing: an existing CLI, an API to be wrapped, a c
 
 Check whether the CLI supports: bootstrap, discovery, parameter understanding, preview, execution, parsing, recovery.
 
-### Step 4. Score the seven principles
+### Step 4. Score the CLI with the rubric, then map back to principles
 
-For each principle: Pass / Partial / Fail — with evidence, risk, and recommendation.
+Use the 10-criterion rubric to score the CLI. Then summarize how those results map to the seven principles with evidence, risk, and recommendation.
 
 ### Step 5. Produce a refactor plan
 
@@ -219,9 +219,9 @@ Assess support for human, agent, system.
 
 Assess each phase: auth bootstrap → env setup → skill/help discovery → schema introspection → dry-run → execution → parsing and recovery.
 
-### 4. Seven-principle review
+### 4. Rubric score + seven-principle review
 
-For each principle: status · evidence · issue · recommendation.
+Report the 10-criterion rubric score first, then summarize the seven principles as: status · evidence · issue · recommendation.
 
 ### 5. Key risks
 
