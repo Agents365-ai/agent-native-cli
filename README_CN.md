@@ -53,6 +53,16 @@
 
 ## skill 安装
 
+### 快速安装 —— 让任意 Agent 帮你装
+
+最简单的方式是请任意一个具备编码能力的 Agent（Claude Code、Codex、Cursor、Aider、Gemini CLI……）把仓库克隆到你所在平台的 skills 目录。把 URL 和目标路径一起写在提示里：
+
+```
+帮我把 https://github.com/Agents365-ai/agent-native-cli 克隆到 ~/.claude/skills/agent-native-cli。
+```
+
+把示例中的目标路径替换为你所在平台的路径 —— 见本节末尾的 **安装路径汇总** 表。由于提示中已经写明了目标路径，这种方式对任何 Agent 都通用，无需依赖 Agent 是否内置 skills 目录约定。对于手边没有 Agent 的场景（CI、全新机器、无人值守脚本），请使用下面各小节里的手动 `git clone` 指令。
+
 ### Claude Code
 
 ```bash

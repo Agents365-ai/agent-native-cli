@@ -53,6 +53,16 @@ The core `SKILL.md` is portable, and this repository includes metadata for the p
 
 ## Skill Installation
 
+### Quick install — ask any agent
+
+The simplest install is to ask any code-capable agent (Claude Code, Codex, Cursor, Aider, Gemini CLI, …) to clone the repo into your platform's skills directory. Just hand it the URL and the destination path:
+
+```
+Clone https://github.com/Agents365-ai/agent-native-cli into ~/.claude/skills/agent-native-cli for me.
+```
+
+Substitute the destination for your platform — see the **Installation paths summary** table at the end of this section. Because the prompt names the exact path, this works for any agent regardless of whether it has built-in knowledge of skills conventions. For environments without an agent handy (CI, fresh machines, headless scripts), use the per-platform `git clone` commands in the sub-sections that follow.
+
 ### Claude Code
 
 ```bash
