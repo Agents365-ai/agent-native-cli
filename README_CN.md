@@ -145,7 +145,7 @@ skills install agent-native-cli
 
 用于 SkillsMP 索引，本仓库使用以下 topics：
 
-`claude-code` `claude-code-skill` `claude-skills` `agent-skills` `skillsmp` `skill-md` `agent-native-cli` `cli-design` `interface-design` `structured-output` `schema-driven` `dry-run` `exit-codes` `tool-design`
+`claude-code` `claude-code-skill` `claude-skills` `agent-skills` `agent-native` `agent-native-cli` `openclaw` `openclaw-skills` `skillsmp` `skill-md` `cli` `cli-design` `interface-design` `structured-output` `schema-driven` `dry-run` `exit-codes` `tool-design`
 
 ## 开源协议
 
