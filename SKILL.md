@@ -5,7 +5,7 @@ license: MIT
 homepage: https://github.com/Agents365-ai/agent-native-cli
 compatibility: Includes sidecar metadata for OpenClaw, Hermes, pi-mono, and OpenAI Codex; the core SKILL.md is portable to any agent runtime that supports Agent Skills-style instructions.
 platforms: [macos, linux, windows]
-metadata: {"openclaw":{"requires":{},"emoji":"⌨️","os":["darwin","linux","win32"]},"hermes":{"tags":["cli","agent-native","interface-design","structured-output","schema-driven"],"category":"engineering","requires_tools":[],"related_skills":[]},"pimo":{"category":"engineering","tags":["cli","agent-native","interface-design","structured-output","schema-driven"]},"author":"Agents365-ai","version":"1.0.0"}
+metadata: {"openclaw":{"requires":{},"emoji":"⌨️","os":["darwin","linux","win32"]},"hermes":{"tags":["cli","agent-native","interface-design","structured-output","schema-driven"],"category":"engineering","requires_tools":[],"related_skills":[]},"pimo":{"category":"engineering","tags":["cli","agent-native","interface-design","structured-output","schema-driven"]},"author":"Agents365-ai","version":"1.1.0"}
 ---
 
 # agent-native-cli
@@ -404,6 +404,48 @@ This single response carries everything an agent needs to recover without a disc
 - The `next` slot suggests the precise follow-up command, so the agent does not need a planning turn to construct it.
 - The `meta` slot carries `request_id` for log correlation, `latency_ms` for SLO tracking, and `schema_version` so the agent can detect drift against any cached schema (Principle 6).
 
+### Example 7 — Good: long-running export with structured stderr progress
+
+```bash
+$ healthkit export run --dataset sleep --since 2024-01-01 --format parquet > result.json
+```
+
+stderr — one JSON object per line, agent reads for liveness without blocking on stdout:
+
+```
+{ "event": "start",    "command": "export.run", "request_id": "req_abc123" }
+{ "event": "progress", "phase": "fetch", "done": 240, "total": 730, "elapsed_ms": 18421 }
+{ "event": "progress", "phase": "fetch", "done": 480, "total": 730, "elapsed_ms": 36842 }
+{ "event": "progress", "phase": "fetch", "done": 730, "total": 730, "elapsed_ms": 54017 }
+{ "event": "progress", "phase": "write", "done": 730, "total": 730, "elapsed_ms": 56103 }
+{ "event": "complete", "request_id": "req_abc123", "elapsed_ms": 56234 }
+```
+
+stdout — single envelope at the end, captured by the agent as the result:
+
+```json
+{
+  "ok": true,
+  "data": {
+    "rows": 730,
+    "path": "/tmp/sleep_export.parquet",
+    "size_bytes": 142336
+  },
+  "meta": {
+    "request_id": "req_abc123",
+    "latency_ms": 56234
+  }
+}
+```
+
+What this gives the agent:
+
+- **Liveness without blocking the result.** The agent can poll stderr for `progress` events and know the command is making forward motion. If stderr falls silent for longer than expected, the agent has a basis for declaring the command stuck — silent multi-minute waits become detectable rather than indistinguishable from progress.
+- **Two-phase visibility.** The `phase` field on each progress event (`fetch` → `write`) lets the agent see *which* part of the command is slow. A 56-second `fetch` phase versus a 2-second `write` phase tells the agent the bottleneck is upstream API latency, not local disk.
+- **Single clean result envelope.** Because progress lives on stderr, stdout still produces exactly one JSON object at the end. The agent's `> result.json` redirect captures the result without the agent needing to filter prose lines out of a stream.
+- **Correlation across both streams.** The same `request_id` appears in the `start` event on stderr, the `complete` event on stderr, and the final `meta` block on stdout. An orchestrator can correlate stderr progress with stdout result and with upstream service logs through one identifier.
+- **Latency reconciliation.** The agent can compare `meta.latency_ms` (56234) against the final progress event's `elapsed_ms` (56103) and confirm the command did not silently wait for tens of seconds after the last progress event.
+
 ---
 
 ## Non-Examples
@@ -731,7 +773,7 @@ This skill teaches how to make a CLI a first-class interface for agents — but 
 | Large multi-tenant SaaS with per-user OAuth and scoped access | **MCP server** — centralized auth, per-user scoping, network-attachable, no need to ship a binary |
 | Hundreds of tools where eager schema dumps would blow the context window | **Hybrid** — expose tools as CLI commands or filesystem-discoverable scripts; load definitions on demand. Anthropic's [code-execution-MCP pattern](https://www.anthropic.com/engineering/code-execution-with-mcp) and `mcp-cli`-style bridges are concrete instances. |
 
-Mario Zechner's [empirical benchmark](https://mariozechner.at/posts/2025-08-15-mcp-vs-cli/) (Aug 2025) of MCP vs CLI for coding agents lands on a one-line conclusion that's worth taking seriously: *a lot of MCPs could have been CLI invocations.* That doesn't make MCP wrong; it means the default has been wrong. For the workflows this skill targets — developer tools, infrastructure CLIs, single-user data and research workflows — CLI is the lighter, more inspectable, more composable choice. For the workflows it doesn't target — multi-tenant SaaS exposing per-user data — MCP earns its complexity.
+Mario Zechner's [empirical benchmark](https://mariozechner.at/posts/2025-08-15-mcp-vs-cli/) (Aug 2025) of MCP vs CLI for coding agents lands on a one-line conclusion that's worth taking seriously: *"Just like a lot of meetings could have been emails, a lot of MCPs could have been CLI invocations."* That doesn't make MCP wrong; it means the default has been wrong. For the workflows this skill targets — developer tools, infrastructure CLIs, single-user data and research workflows — CLI is the lighter, more inspectable, more composable choice. For the workflows it doesn't target — multi-tenant SaaS exposing per-user data — MCP earns its complexity.
 
 If you reach a design where you'd be fighting the CLI process model (per-request user context, fine-grained per-call authorization, network-attached without local install), that's the signal to switch interfaces, not to bend this skill out of shape.
 
@@ -762,7 +804,7 @@ The conventions in this skill draw on several primary sources in the agent-CLI d
 - Thibault Le Ouay Ducasse / openstatus, [*Building a CLI That Works for Humans and Machines*](https://www.openstatus.dev/blog/building-cli-for-human-and-agents) (Apr 2, 2026) — TTY detection as the human/machine switch cited in Principle 1.
 - Mario Zechner, [*MCP vs CLI: Benchmarking Tools for Coding Agents*](https://mariozechner.at/posts/2025-08-15-mcp-vs-cli/) (Aug 15, 2025) — empirical case that many MCP servers could be CLI invocations.
 - Armin Ronacher, [*Skills vs Dynamic MCP Loadouts*](https://lucumr.pocoo.org/2025/12/13/skills-vs-mcp/) (Dec 13, 2025) — schema/API stability as a first-class concern cited in Principle 6.
-- GitHub Engineering, [*Scripting with GitHub CLI*](https://github.blog/engineering/engineering-principles/scripting-with-github-cli/) (Mar 11, 2021) — `gh --json field1,field2,field3` as the canonical response-side field-selection pattern.
+- GitHub Engineering, [*Scripting with GitHub CLI*](https://github.blog/engineering/engineering-principles/scripting-with-github-cli/) (Mar 11, 2021) — `gh api --jq` and structured JSON output as a first-class CLI pattern for scripted and machine consumers. The post predates the `gh <resource> --json field1,field2` field-selection flag (which landed via [cli/cli#1089](https://github.com/cli/cli/issues/1089) shortly after), but lays out the design philosophy that the flag is built on.
 - [*Command Line Interface Guidelines*](https://clig.dev/) (clig.dev) — the pre-agent baseline for human-first CLI design. This skill extends it; it does not replace it.
 - [`sysexits.h`](https://manpages.ubuntu.com/manpages/noble/man3/sysexits.h.3head.html) — the BSD exit-code vocabulary that the Exit code model section deliberately simplifies away from.
 
