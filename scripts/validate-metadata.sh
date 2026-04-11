@@ -24,9 +24,9 @@ assert_contains SKILL.md 'Includes sidecar metadata for OpenClaw, Hermes, pi-mon
 assert_contains README.md 'includes metadata for the platforms listed below'
 assert_contains README_CN.md '并为下列平台提供元数据'
 
-assert_contains SKILL.md 'Use the 10-criterion rubric to score the CLI.'
-assert_contains SKILL.md 'Report the 10-criterion rubric score first'
-assert_contains agents/openai.yaml 'Score a CLI on the 10-criterion rubric and summarize the seven design principles'
+assert_contains SKILL.md 'Use the 14-criterion rubric to score the CLI.'
+assert_contains SKILL.md 'Report the 14-criterion rubric score first'
+assert_contains agents/openai.yaml 'Score a CLI on the 14-criterion rubric and summarize the seven design principles'
 
 test -f LICENSE || {
   echo 'LICENSE file is missing' >&2

@@ -39,7 +39,7 @@ The core `SKILL.md` is portable, and this repository includes metadata for the p
 | Design delegated authentication | No | Yes — human manages auth lifecycle; agent uses token |
 | Separate trust levels for env vs. CLI args | No | Yes — directional trust model |
 | Produce prioritized refactor plan | Rarely | Always — P0 / P1 / P2 with examples |
-| Score CLI across 10-criterion rubric | No | Yes — 0–2 per criterion with verdict |
+| Score CLI across 14-criterion rubric | No | Yes — 0–2 per criterion with verdict |
 
 ## When to use
 

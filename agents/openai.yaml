@@ -15,7 +15,7 @@ capabilities:
   - Design delegated authentication — human owns auth lifecycle, agent receives token
   - Apply directional trust model — env vars trusted, CLI args untrusted
   - Convert a REST API or SDK into an agent-native CLI command tree
-  - Score a CLI on the 10-criterion rubric and summarize the seven design principles
+  - Score a CLI on the 14-criterion rubric and summarize the seven design principles
   - Produce a prioritized P0/P1/P2 refactor plan with concrete examples
 
 prerequisites: []
