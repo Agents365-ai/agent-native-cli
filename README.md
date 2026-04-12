@@ -1,6 +1,6 @@
 # agent-native-cli — Agent-Native CLI Design & Review Skill
 
-[中文文档](README_CN.md)
+[中文文档](README_CN.md) · [Docs site](https://agents365-ai.github.io/agent-native-cli/)
 
 ## What it does
 

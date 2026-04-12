@@ -1,6 +1,6 @@
 # agent-native-cli — AI 智能体原生 CLI 设计与评审 Skill
 
-[English](README.md)
+[English](README.md) · [文档站点](https://agents365-ai.github.io/agent-native-cli/zh.html)
 
 ## 功能说明
 
