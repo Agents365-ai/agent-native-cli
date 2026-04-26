@@ -132,21 +132,6 @@ skills install agent-native-cli
 | pi-mono | `~/.pimo/skills/agent-native-cli/` | — |
 | OpenAI Codex | `~/.codex/skills/agent-native-cli/` | `.codex/skills/agent-native-cli/` |
 
-## Files
-
-- `SKILL.md` — the core skill instructions. This is the primary file across platforms.
-- `agents/openai.yaml` — OpenAI Codex-specific configuration (display, policy, capabilities)
-- `README.md` — this file (English)
-- `README_CN.md` — Chinese documentation
-
-> **Note:** `SKILL.md` is the portable core. Some platforms, including OpenAI Codex, can also use sidecar metadata such as `agents/openai.yaml`.
-
-## GitHub Topics
-
-For SkillsMP indexing, this repository uses the following topics:
-
-`claude-code` `claude-code-skill` `claude-skills` `agent-skills` `agent-native` `agent-native-cli` `openclaw` `openclaw-skills` `skillsmp` `skill-md` `cli` `cli-design` `interface-design` `structured-output` `schema-driven` `dry-run` `exit-codes` `tool-design`
-
 ## License
 
 MIT
