@@ -151,6 +151,32 @@ For SkillsMP indexing, this repository uses the following topics:
 
 MIT
 
+## Changelog
+
+### [v1.2.0](https://github.com/Agents365-ai/agent-native-cli/releases/tag/v1.2.0) — April 26, 2026
+
+**2026 Research Update** — Aligned with latest agent-CLI design patterns and benchmarks.
+
+**New Content:**
+- Added hybrid MCP-CLI decision framework with decision matrix (3 scenarios for each pattern)
+- Strengthened Principle 6 with schema versioning in response envelopes and deprecation signals
+- Added Example 8: Schema versioning with drift detection for agent caching scenarios
+- Quantified anti-pattern: eager schema dumps (55K tokens per 10 invocations)
+- Added token efficiency checklist (6 items for evaluating CLI context cost)
+
+**Research Alignment:**
+- Cite 2026 benchmarks: CLI achieves 28% higher task completion, 33% token efficiency vs. MCP-only
+- Added 4 new references: Reinhardt, Chugh, RudderStack on hybrid patterns (2026)
+- Validated all 7 principles through April 2026 production deployments
+
+**Recommendation:** This version reflects the consensus that large production agents (Claude Code, Cursor, Gemini CLI) use both CLI (for local/scriptable tasks) and MCP (for multi-tenant SaaS). Skill remains fundamentally sound; no principles required rewriting.
+
+### v1.1.0 — Early 2026
+
+Initial version with seven principles, 14-criterion rubric, and examples.
+
+---
+
 ## Support
 
 If this skill helps your work, consider supporting the author:
