@@ -175,6 +175,30 @@
       line-height: 1.5; white-space: pre-wrap; color: var(--green);
     }
 
+    /* Support */
+    .support-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px; max-width: 820px; margin: 0 auto 40px;
+    }
+    .support-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 12px; padding: 20px;
+      display: flex; flex-direction: column; align-items: center; text-align: center;
+      transition: background 0.3s;
+    }
+    .support-card img {
+      width: 160px; height: 160px; object-fit: contain;
+      border-radius: 8px; margin-bottom: 12px; background: #fff;
+    }
+    .support-card b { font-size: 14px; color: var(--text); }
+    .author-block {
+      text-align: center; padding-top: 32px; margin-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+    .author-block h3 { font-size: 18px; margin-bottom: 8px; font-weight: 700; }
+    .author-block p { color: var(--text-muted); margin-bottom: 12px; }
+    .author-links { display: inline-flex; gap: 24px; font-size: 14px; }
+
     /* Footer */
     footer {
       border-top: 1px solid var(--border); padding: 32px 0;
@@ -385,6 +409,40 @@ git clone https://github.com/Agents365-ai/agent-native-cli.git ~/.agents/skills/
 
 # Project-level install
 git clone https://github.com/Agents365-ai/agent-native-cli.git .agents/skills/agent-native-cli</pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- Support & Author -->
+  <section id="support">
+    <div class="container">
+      <h2 class="section-title">Support</h2>
+      <p class="section-sub">If this skill helps your work, consider supporting the author.</p>
+      <div class="support-grid">
+        <div class="support-card">
+          <img src="https://raw.githubusercontent.com/Agents365-ai/images_payment/main/qrcode/wechat-pay.png" alt="WeChat Pay" loading="lazy">
+          <b>WeChat Pay</b>
+        </div>
+        <div class="support-card">
+          <img src="https://raw.githubusercontent.com/Agents365-ai/images_payment/main/qrcode/alipay.png" alt="Alipay" loading="lazy">
+          <b>Alipay</b>
+        </div>
+        <div class="support-card">
+          <img src="https://raw.githubusercontent.com/Agents365-ai/images_payment/main/qrcode/buymeacoffee.png" alt="Buy Me a Coffee" loading="lazy">
+          <b>Buy Me a Coffee</b>
+        </div>
+        <div class="support-card">
+          <img src="https://raw.githubusercontent.com/Agents365-ai/images_payment/main/awarding/award.gif" alt="Give a Reward" loading="lazy">
+          <b>Give a Reward</b>
+        </div>
+      </div>
+      <div class="author-block">
+        <h3>Author</h3>
+        <p><strong>Agents365-ai</strong></p>
+        <div class="author-links">
+          <a href="https://github.com/Agents365-ai">GitHub</a>
+          <a href="https://space.bilibili.com/441831884">Bilibili</a>
+        </div>
       </div>
     </div>
   </section>
