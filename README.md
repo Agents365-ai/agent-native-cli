@@ -140,6 +140,15 @@ MIT
 
 ## Changelog
 
+### v1.3.1 — May 5, 2026
+
+**Content depth + visual identity.**
+
+- New `references/testing.md` (~235 lines): for every design pattern in `references/design-patterns.md`, a corresponding test recipe — envelope contracts, stdout/stderr separation, exit codes, idempotency replay, TTY behavior, schema drift, dry-run safety, auth delegation, locale determinism, streaming. Closes the "skill teaches how to design but not how to verify" gap.
+- Bilingual concept hero image (`docs/assets/concept-hero-{en,zh}.png`) embedded in both READMEs and both landing pages — one visual carrying the "one CLI · three audiences · three channels" mental model.
+- Title cleanup in both READMEs (dropped doubled "design", redundant "Skill" suffix, and the redundant repo-name prefix); landing pages re-synced to current name and version.
+- `.claude/` is now gitignored.
+
 ### v1.3.0 — May 5, 2026
 
 **Structural cleanup** — same content, leaner SKILL.md, on-demand reference loading.
