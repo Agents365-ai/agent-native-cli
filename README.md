@@ -140,6 +140,10 @@ MIT
 
 ## Changelog
 
+### v1.3.2 — May 5, 2026
+
+**Auto-update step.** Added `Step 0` to the standard review workflow: on first use per conversation, the model checks `.last_update` and runs `git pull --ff-only` if older than 24 h, silently. Failure modes (offline, conflict, not a git checkout — e.g. ClawHub-installed copy) are ignored. Frees git-clone users from depending on whether the host runtime auto-pulls skills, and works identically across Claude Code / OpenClaw / Hermes / pi-mono / Codex.
+
 ### v1.3.1 — May 5, 2026
 
 **Content depth + visual identity.**
