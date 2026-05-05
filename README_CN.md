@@ -1,4 +1,4 @@
-# agent-native-design — AI 智能体原生 CLI 设计与评审 Skill
+# agent-native-design — 为 AI 智能体设计真正可用的 CLI
 
 [English](README.md) · [文档站点](https://agents365-ai.github.io/agent-native-design/zh.html)
 
