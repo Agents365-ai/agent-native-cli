@@ -138,6 +138,15 @@ MIT
 
 ## Changelog
 
+### v1.3.0 — May 5, 2026
+
+**Structural cleanup** — same content, leaner SKILL.md, on-demand reference loading.
+
+- Split SKILL.md (919 → 237 lines) into a lean core plus `references/` (examples, rubric, checklists, design patterns, hybrid CLI/MCP discussion, citations). Reference files load only when needed, mirroring the progressive-disclosure pattern this skill teaches.
+- Deduplicated overlapping discussion: hybrid CLI+MCP and schema versioning each have one detailed home now, with brief pointers elsewhere.
+- Verified all citations against their primary sources; corrected two metadata errors (Manveer Chawla, not "Chugh"; Ugo Enyioha's piece is Feb 2025, not Feb 2026).
+- Moved one-time review artifacts (`REVIEW_2026.md`, `IMPROVEMENTS_APPLIED.md`) into `docs/maintainers/` so they no longer appear at the repo root.
+
 ### [v1.2.0](https://github.com/Agents365-ai/agent-native-design/releases/tag/v1.2.0) — April 26, 2026
 
 **2026 Research Update** — Aligned with latest agent-CLI design patterns and benchmarks.
