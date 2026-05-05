@@ -140,6 +140,19 @@ MIT
 
 ## Changelog
 
+### v1.3.3 — May 5, 2026
+
+**Replaced Step 0 silent auto-pull with a notify-only update check.**
+
+On review, the v1.3.2 silent `git pull` proved inconsistent with this skill's own *Principle 2 (trust is directional)* and *Principle 7 (auth/lifecycle is delegated to the human, not owned by the agent)*. The new Step 0:
+
+- **Throttles to one check per 24 h per installation** (was: every fresh conversation)
+- **Notifies and asks** — surfaces the actual version delta (`vX.Y.Z → vA.B.C`) and pulls only with explicit user consent
+- Same silent fallback for non-git-checkout installs (ClawHub copy, read-only paths)
+- Removes the supply-chain attack surface where a compromised upstream could be silently fetched into every installation on the next conversation
+
+If you upgraded to v1.3.2, this is the right reason to upgrade once more.
+
 ### v1.3.2 — May 5, 2026
 
 **Auto-update step.** Added `Step 0` to the standard review workflow: on first use per conversation, the model checks `.last_update` and runs `git pull --ff-only` if older than 24 h, silently. Failure modes (offline, conflict, not a git checkout — e.g. ClawHub-installed copy) are ignored. Frees git-clone users from depending on whether the host runtime auto-pulls skills, and works identically across Claude Code / OpenClaw / Hermes / pi-mono / Codex.

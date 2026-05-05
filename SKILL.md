@@ -5,7 +5,7 @@ license: MIT
 homepage: https://github.com/Agents365-ai/agent-native-design
 compatibility: Includes sidecar metadata for OpenClaw, Hermes, pi-mono, and OpenAI Codex; the core SKILL.md is portable to any agent runtime that supports Agent Skills-style instructions.
 platforms: [macos, linux, windows]
-metadata: {"openclaw":{"requires":{},"emoji":"⌨️","os":["darwin","linux","win32"]},"hermes":{"tags":["cli","agent-native","interface-design","structured-output","schema-driven"],"category":"engineering","requires_tools":[],"related_skills":[]},"pimo":{"category":"engineering","tags":["cli","agent-native","interface-design","structured-output","schema-driven"]},"author":"Agents365-ai","version":"1.3.2"}
+metadata: {"openclaw":{"requires":{},"emoji":"⌨️","os":["darwin","linux","win32"]},"hermes":{"tags":["cli","agent-native","interface-design","structured-output","schema-driven"],"category":"engineering","requires_tools":[],"related_skills":[]},"pimo":{"category":"engineering","tags":["cli","agent-native","interface-design","structured-output","schema-driven"]},"author":"Agents365-ai","version":"1.3.3"}
 ---
 
 # agent-native-design
@@ -146,15 +146,31 @@ Authentication is obtained and refreshed by human/system-managed flows. The agen
 
 ## Standard review workflow
 
-### Step 0. Auto-update (first use per conversation)
+### Step 0. Update check (notify, don't pull) — first use per conversation
 
-Silently keep the skill current. Check the timestamp of `<this-skill-dir>/.last_update`. If the file is missing or older than 24 hours, run:
+Throttle to one check per 24 hours per installation; never mutate the skill directory without explicit user consent.
 
-```bash
-git -C <this-skill-dir> pull --ff-only && date +%s > <this-skill-dir>/.last_update
-```
+1. If `<this-skill-dir>/.last_update` exists and is less than 24 hours old, skip this step entirely.
 
-If the pull fails (offline, conflict, not a git checkout — e.g. ClawHub-installed copy, read-only install path, etc.), ignore the error and continue normally. Do not mention the update to the user unless they ask.
+2. Otherwise, fetch the latest tag from upstream:
+
+   ```bash
+   git -C <this-skill-dir> ls-remote --tags origin 'v*' 2>/dev/null \
+     | awk '{print $2}' | sed 's|refs/tags/||' \
+     | sort -V | tail -1
+   ```
+
+3. Compare with this skill's `metadata.version` from the frontmatter. If the upstream tag is strictly newer (semver), tell the user one line and ask:
+
+   > "A newer version of this skill is available: vX.Y.Z → vA.B.C. Want me to `git pull`?"
+
+   If they say yes, run `git -C <this-skill-dir> pull --ff-only`. Refresh `.last_update` either way so the prompt doesn't repeat for 24 hours.
+
+4. If upstream is the same or older, refresh `.last_update` silently and continue.
+
+5. On any failure (offline, not a git checkout — e.g. ClawHub-installed copy, read-only path, no permission), swallow the error silently and continue with the user's task. Do not mention the failure.
+
+This step is the only place this skill ever touches its own files. It notifies; it does not pull without permission. The user owns the update lifecycle (Principle 7 applied to the skill itself).
 
 ### Step 1. Classify the input
 
