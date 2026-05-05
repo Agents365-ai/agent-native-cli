@@ -77,6 +77,12 @@
     .hero h1 { font-size: 48px; font-weight: 800; margin-bottom: 16px; letter-spacing: -1px; }
     .hero h1 span { color: var(--accent); }
     .hero p { font-size: 20px; color: var(--text-muted); max-width: 640px; margin: 0 auto 32px; }
+    .hero-image {
+      display: block; max-width: 880px; width: 100%;
+      margin: 32px auto 36px; border-radius: 12px;
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.18);
+    }
+    [data-theme="light"] .hero-image { box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08); }
     .hero-install {
       display: inline-flex; align-items: center; gap: 12px;
       background: var(--bg-code); border: 1px solid var(--border); border-radius: 8px;
@@ -244,6 +250,7 @@
       <div class="hero-badge">v1.3.0 &mdash; Skill for Designing &amp; Reviewing CLIs</div>
       <h1>agent-native-<span>design</span></h1>
       <p>Design CLIs that AI agents can actually use. Stable stdout contracts, deterministic exit codes, dry-run, schema introspection, and delegated auth &mdash; as a review and refactor skill.</p>
+      <img class="hero-image" src="assets/concept-hero-en.png" alt="One CLI serving three audiences: stderr to humans, stdout JSON to AI agents, exit codes to systems" loading="lazy">
       <div class="hero-install">
         <code id="install-cmd">git clone https://github.com/Agents365-ai/agent-native-design.git ~/.claude/skills/agent-native-design</code>
         <button class="copy-btn" onclick="copyInstall()">Copy</button>

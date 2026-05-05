@@ -77,6 +77,12 @@
     .hero h1 { font-size: 48px; font-weight: 800; margin-bottom: 16px; letter-spacing: -1px; }
     .hero h1 span { color: var(--accent); }
     .hero p { font-size: 20px; color: var(--text-muted); max-width: 680px; margin: 0 auto 32px; }
+    .hero-image {
+      display: block; max-width: 880px; width: 100%;
+      margin: 32px auto 36px; border-radius: 12px;
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.18);
+    }
+    [data-theme="light"] .hero-image { box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08); }
     .hero-install {
       display: inline-flex; align-items: center; gap: 12px;
       background: var(--bg-code); border: 1px solid var(--border); border-radius: 8px;
@@ -244,6 +250,7 @@
       <div class="hero-badge">v1.3.0 &mdash; CLI 设计与评审技能</div>
       <h1>agent-native-<span>design</span></h1>
       <p>为 AI 智能体设计真正可用的 CLI。稳定的 stdout 契约、确定性退出码、dry-run、Schema 自省、委托式认证 &mdash; 作为一项评审与重构技能。</p>
+      <img class="hero-image" src="assets/concept-hero-zh.png" alt="一个 CLI 同时服务三类观众：stderr 给人类、stdout JSON 给 AI 智能体、退出码给系统" loading="lazy">
       <div class="hero-install">
         <code id="install-cmd">git clone https://github.com/Agents365-ai/agent-native-design.git ~/.claude/skills/agent-native-design</code>
         <button class="copy-btn" onclick="copyInstall()">复制</button>
