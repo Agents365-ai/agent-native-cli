@@ -228,6 +228,7 @@ Load on demand — these are not in the agent's context until needed:
 | `references/checklists.md` | Walking through a CLI auditing list with the user, or sanity-checking a new design |
 | `references/design-patterns.md` | Writing the contract for envelopes, exit codes, idempotency, non-interactive mode, long-running commands, schema versioning, locale/time |
 | `references/hybrid-mcp-cli.md` | Deciding CLI vs. MCP vs. both, or citing benchmark numbers behind the CLI efficiency claim |
+| `references/testing.md` | Showing the user how to verify their CLI actually upholds the contract (envelope shape, idempotency replay, TTY behavior, schema drift, dry-run safety, locale determinism) — load this when the design review converges on "how do we keep it agent-native over time?" |
 | `references/citations.md` | Citing the primary sources behind a recommendation |
 
 ---
