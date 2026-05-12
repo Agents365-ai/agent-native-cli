@@ -6,15 +6,6 @@
 
 一个评估 CLI 是否能被 AI 智能体可靠使用,并帮你设计同时服务人类、智能体、编排系统的 CLI 的技能。围绕 7 项原则、14 项评分标准、结构化重构剧本展开。
 
-## 文档导航
-
-| 文档 | 内容 |
-|---|---|
-| [docs/install_CN.md](docs/install_CN.md) | 各平台安装命令(Claude Code / OpenClaw / Hermes / pi-mono / Codex / SkillsMP)与路径汇总 |
-| [docs/changelog.md](docs/changelog.md) | 从 v1.1.0 到 v1.3.3 的版本历史(英文) |
-| [SKILL.md](SKILL.md) | agent 加载的工作流指南 |
-| [references/](references/) | 按需加载的参考资料 —— 设计模式、评分标准、清单、示例、测试配方、引用文献 |
-
 ## 功能说明
 
 - 评估现有 CLI 是否能被 AI 智能体可靠使用
@@ -25,6 +16,15 @@
 - 定义安全分级(开放 / 警示 / 隐藏),实现命令可见性的渐进式控制
 - 设计委托式认证,使智能体永远不拥有认证生命周期
 - 生成带有具体接口示例的优先级重构计划
+
+## 文档导航
+
+| 文档 | 内容 |
+|---|---|
+| [docs/install_CN.md](docs/install_CN.md) | 各平台安装命令(Claude Code / OpenClaw / Hermes / pi-mono / Codex / SkillsMP)与路径汇总 |
+| [docs/changelog.md](docs/changelog.md) | 从 v1.1.0 到 v1.3.3 的版本历史(英文) |
+| [SKILL.md](SKILL.md) | agent 加载的工作流指南 |
+| [references/](references/) | 按需加载的参考资料 —— 设计模式、评分标准、清单、示例、测试配方、引用文献 |
 
 ## 多平台支持
 

@@ -6,15 +6,6 @@
 
 A skill that evaluates whether a CLI is reliably usable by AI agents and helps you design CLIs that serve humans, agents, and orchestration systems at the same time. Built around seven principles, a 14-criterion rubric, and a structured refactor playbook.
 
-## Documentation
-
-| Doc | What's inside |
-|---|---|
-| [docs/install.md](docs/install.md) | Per-platform install (Claude Code / OpenClaw / Hermes / pi-mono / Codex / SkillsMP) and path summary |
-| [docs/changelog.md](docs/changelog.md) | Version history from v1.1.0 through v1.3.3 |
-| [SKILL.md](SKILL.md) | Workflow guide loaded by the agent |
-| [references/](references/) | On-demand reference material — design patterns, rubric, checklists, examples, testing recipes, citations |
-
 ## What it does
 
 - Evaluates whether an existing CLI is reliably usable by AI agents
@@ -25,6 +16,15 @@ A skill that evaluates whether a CLI is reliably usable by AI agents and helps y
 - Defines safety tiers (open / warned / hidden) for graduated command visibility
 - Designs delegated authentication so agents never own the auth lifecycle
 - Produces prioritized refactor plans with concrete interface examples
+
+## Documentation
+
+| Doc | What's inside |
+|---|---|
+| [docs/install.md](docs/install.md) | Per-platform install (Claude Code / OpenClaw / Hermes / pi-mono / Codex / SkillsMP) and path summary |
+| [docs/changelog.md](docs/changelog.md) | Version history from v1.1.0 through v1.3.3 |
+| [SKILL.md](SKILL.md) | Workflow guide loaded by the agent |
+| [references/](references/) | On-demand reference material — design patterns, rubric, checklists, examples, testing recipes, citations |
 
 ## Multi-Platform Support
 
